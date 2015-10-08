@@ -4,6 +4,7 @@ var gulp        = require('gulp'),
     pngquant    = require('imagemin-pngquant'),
     imagemin    = require('gulp-imagemin'),
     browserSync = require('browser-sync'),
+    clean       = require('gulp-rimraf'),
     replace     = require('gulp-replace'),
     inlineimg   = require('gulp-inline-image');
 
@@ -21,6 +22,11 @@ gulp.task('server', ['build', 'watch'], function() {
     });
 });
 
+gulp.task('clean', function () {
+    return gulp.src(['build'], {read: false})
+        .pipe(clean());
+});
+
 gulp.task('imagemin', function() {
     return gulp.src('src/img/*')
         .pipe(imagemin({
@@ -31,7 +37,7 @@ gulp.task('imagemin', function() {
         .pipe(gulp.dest('src/img'));
 });
 
-gulp.task('build', ['imagemin'], function() {
+gulp.task('build-html', ['imagemin'], function() {
     return gulp.src('src/*.html')
         .pipe(inline({
             base: 'src/',
@@ -49,7 +55,8 @@ gulp.task('build', ['imagemin'], function() {
 });
 
 gulp.task('watch', function() {
-    gulp.watch(['src/**/*'], ['build']);
+    gulp.watch(['src/**/*'], ['build-html']);
 });
 
 gulp.task('default', ['server']);
+gulp.task('build', ['clean', 'build-html']);
