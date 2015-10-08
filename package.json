@@ -16,6 +16,7 @@
     "gulp-inline-css": "^3.0.0",
     "gulp-inline-image": "0.0.4",
     "gulp-inline-image-html": "^0.2.1",
+    "gulp-replace": "^0.5.4",
     "imagemin-pngquant": "^4.1.0"
   }
 }

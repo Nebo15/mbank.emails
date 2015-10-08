@@ -4,6 +4,7 @@ var gulp        = require('gulp'),
     pngquant    = require('imagemin-pngquant'),
     imagemin    = require('gulp-imagemin'),
     browserSync = require('browser-sync'),
+    replace     = require('gulp-replace'),
     inlineimg   = require('gulp-inline-image');
 
 gulp.task('server', ['build', 'watch'], function() {
@@ -27,7 +28,7 @@ gulp.task('imagemin', function() {
             svgoPlugins: [{removeViewBox: false}],
             use: [pngquant()]
         }))
-        .pipe(gulp.dest('build/img'));
+        .pipe(gulp.dest('src/img'));
 });
 
 gulp.task('build', ['imagemin'], function() {
@@ -42,6 +43,8 @@ gulp.task('build', ['imagemin'], function() {
             removeStyleTags: true,
             removeLinkTags: true
         }))
+        .pipe(replace(/class="([^"]*)" /g, ''))
+        .pipe(replace('data:image/unknown', 'data:image/png'))
         .pipe(gulp.dest('build/'));
 });
 
