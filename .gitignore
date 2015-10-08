@@ -13,14 +13,4 @@ composer.lock
 .sass-cache
 
 node_modules/*
-www/js/*
-www/css/*
-www/fonts/*
-www/img/*
-var/*
-vendor/*
-www/components/*
-www/css/*.css
-www/*.html
-
-www/js/override.js
+build
