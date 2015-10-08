@@ -95,6 +95,7 @@ table {
     width: 33%;
     padding: 43px 20px 0 20px;
     vertical-align: top;
+    word-wrap: break-word;
 }
 
 .header__cell-middle {
@@ -109,9 +110,11 @@ table {
     padding: 43px 20px 0 20px;
     text-align: right;
     vertical-align: top;
+    word-wrap: break-word;
 }
 
 .header__logo {
+    max-width: 100%;
     width: 111px;
     height: 134px;
 }
@@ -127,6 +130,56 @@ table {
 
 .content__text {
     padding: 20px 0px;
+}
+
+/* Reports */
+.report__table {
+    table-layout: fixed;
+    border: none;
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+}
+
+.report__row {
+    border-bottom: 1px solid #eee;
+}
+
+.report__row-head {
+    text-align: center;
+    font-weight: bold;
+}
+
+.report__cell {
+    padding: 10px 0;
+}
+
+.report__cell-date {
+    width: 150px;
+}
+
+.report__cell-description {
+    width: 100%;
+}
+
+.report__cell-total {
+    width: 150px;
+}
+
+.report__total-out {
+    /*color: #D51729;*/
+}
+
+.report__total {
+    color: #1FC48C
+}
+
+.report__cell-balance {
+    padding-top: 20px;
+}
+
+.report__balance {
+    color: #1FC48C;
 }
 
 /* Footer */
@@ -167,24 +220,4 @@ table {
 .footer__link {
     color: #03C0E9;
     text-decoration: none;
-}
-
-
-
-
-
-
-
-
-.report {
-    border-collapse: collapse;
-    border-spacing: 0;
-    font-size: 1rem;
-    table-layout: fixed;
-    width: 100%;
-    padding: 0 50px 0;
-}
-
-.report__value {
-    font-size: 2.5rem;
 }

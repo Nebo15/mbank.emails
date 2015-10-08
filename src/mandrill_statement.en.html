@@ -11,18 +11,57 @@
             <table class="header__table">
                 <tr>
                     <td class="header__cell-left text-large">
+                        Best Wallet,
+                        <br>
+                        Payments statement.
                     </td>
                     <td class="header__cell-middle">
                         <img src="https://api.wallet.best/img/mail/logo_red.png" class="header__logo image" alt="Best Wallet logo" >
                     </td>
                     <td class="header__cell-right text-large">
+                        <b>Report period:</b>
+                        <br>
+                        <span class="text-small">
+                            {{date_from}} - {{date_to}}
+                        </span>
                     </td>
                 </tr>
             </table>
             <div class="content">
                 <hr class="content__delimiter">
                 <div class="content__text">
-                    {{ content }}
+                    <table class="report__table">
+                        <tr class="report__row report__row-head">
+                            <td  class="report__cell report__cell-description">
+                                Description
+                            </td>
+                            <td class="report__cell report__cell-total">
+                                Total
+                            </td>
+                        </tr>
+                        {{#each transactions}}
+                            <tr class="report__row">
+                                <td class="report__cell">
+                                    {{name}}
+                                    <p class="text-small">{{processed_at}}</p>
+                                    <p class="text-small">{{description}}</p>
+                                </td>
+                                <td class="report__cell text-right">
+                                    {{#if out}}
+                                        <span class="report__total-out">{{total}} RUR</span>
+                                    {{else}}
+                                        <span class="report__total">+ {{total}} RUR</span>
+                                    {{/if}}
+                                </td>
+                            </tr>
+                        {{/each}}
+                        <tr>
+                            <td colspan="2" class="text-center report__cell-balance">
+                                Your current wallet balance is
+                                <span class="report__balance text-large">{{amount}} RUR</span>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
                 <hr class="content__delimiter">
             </div>
@@ -30,26 +69,26 @@
                 <tr>
                     <td class="footer__cell-left">
                         <p class="footer__block">
-                            <b>Управление подпиской:</b>
+                            <b>Manage subscription:</b>
                             <br>
                             {{ unsubscribe_link }}
                         </p>
                     </td>
                     <td class="footer__cell-right">
                         <p class="footer__block">
-                            <b>Служба поддержки:</b>
+                            <b>Support:</b>
                             <br>
                             <a class="footer__link" href="mailto:support@wallet.best">support@wallet.best</a>
                         </p>
 
                         <p class="footer__block">
-                            <b>Официальный сайт:</b>
+                            <b>Official site:</b>
                             <br>
                             <a class="footer__link" href="https://wallet.best" target="_blank">wallet.best</a>
                         </p>
 
                         <p class="footer__block">
-                            <b>Наши страницы:</b>
+                            <b>Our social pages:</b>
                             <br>
                             <a class="social__link-facebook" href="https://facebook.com/wallet.best">
                                 <img src="http://cl.ly/image/3P3M3S1T093M/facebook.png" class="social__logo" alt="Facebook">
